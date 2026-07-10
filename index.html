@@ -14,22 +14,22 @@
     <style>
         body {
             font-family: 'Plus Jakarta Sans', sans-serif;
-            background: linear-gradient(135deg, #0f0f11 0%, #000000 100%);
-            color: #fff;
+            background: linear-gradient(135deg, #0d0d0f 0%, #020202 100%);
+            color: #d4d4d8; /* Dull White / Zinc Base */
             overflow-x: hidden;
         }
 
-        /* Smooth B&W Gradient Text */
+        /* Matte Dull White to Darker Silver Gradient for text */
         .gradient-text {
-            background: linear-gradient(180deg, #ffffff 30%, #a3a3a3 100%);
+            background: linear-gradient(180deg, #e4e4e7 20%, #a1a1aa 100%);
             -webkit-background-clip: text;
             -webkit-text-fill-color: transparent;
         }
 
         /* Aesthetic Glow Card & 3D Tilt Effect Simulation */
         .aesthetic-card {
-            background: rgba(255, 255, 255, 0.03);
-            border: 1px solid rgba(255, 255, 255, 0.08);
+            background: rgba(255, 255, 255, 0.02);
+            border: 1px solid rgba(255, 255, 255, 0.05);
             backdrop-filter: blur(12px);
             transition: transform 0.4s cubic-bezier(0.25, 1, 0.5, 1), border-color 0.4s, box-shadow 0.4s;
             transform-style: preserve-3d;
@@ -38,15 +38,15 @@
 
         .aesthetic-card:hover {
             transform: translateY(-5px) rotateX(4deg) rotateY(-4deg);
-            border-color: rgba(255, 255, 255, 0.25);
-            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.7), 0 0 30px rgba(255, 255, 255, 0.05);
+            border-color: rgba(255, 255, 255, 0.15);
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.8), 0 0 30px rgba(255, 255, 255, 0.02);
         }
 
         /* Custom Reveal Animation */
         @keyframes fadeInUp {
             from {
                 opacity: 0;
-                transform: translateY(30px);
+                transform: translateY(20px);
             }
             to {
                 opacity: 1;
@@ -60,112 +60,109 @@
 
         /* Subtle Background Grid Line Overlay */
         .bg-grid {
-            background-size: 40px 40px;
-            background-image: linear-gradient(to right, rgba(255, 255, 255, 0.01) 1px, transparent 1px),
-                              linear-gradient(to bottom, rgba(255, 255, 255, 0.01) 1px, transparent 1px);
+            background-size: 50px 50px;
+            background-image: linear-gradient(to right, rgba(255, 255, 255, 0.008) 1px, transparent 1px),
+                              linear-gradient(to bottom, rgba(255, 255, 255, 0.008) 1px, transparent 1px);
         }
     </style>
 </head>
-<body class="relative min-h-screen bg-grid antialiased selection:bg-white selection:text-black">
+<body class="relative min-h-screen bg-grid antialiased selection:bg-neutral-800 selection:text-white">
 
     <!-- Navbar -->
     <nav class="w-full max-w-6xl mx-auto px-6 py-6 flex justify-between items-center z-50 relative animate-fade-in">
         <div class="flex items-center gap-3">
-            <img src="khauf.png" alt="Khauf Logo" class="w-10 h-10 rounded-full border border-white/20 object-cover">
-            <span class="text-xl font-bold tracking-wider uppercase">Khauf</span>
+            <img src="khauf.png" alt="Khauf Logo" class="w-9 h-9 rounded-full border border-white/10 object-cover">
+            <span class="text-lg font-bold tracking-wider uppercase text-neutral-300">Khauf</span>
         </div>
         <a href="https://discord.com/users/1503092593435742399" target="_blank" 
-           class="px-5 py-2.5 bg-white text-black font-semibold rounded-full text-sm tracking-wide hover:bg-neutral-200 transition-all duration-300 shadow-lg shadow-white/5 flex items-center gap-2">
+           class="px-5 py-2.5 bg-neutral-200 text-black font-semibold rounded-full text-xs tracking-wide hover:bg-white transition-all duration-300 shadow-lg shadow-white/5 flex items-center gap-2">
             <i class="fa-brands fa-discord"></i> DM on Discord
         </a>
     </nav>
 
     <!-- Hero Section -->
-    <header class="max-w-5xl mx-auto px-6 pt-16 pb-24 text-center relative z-10 animate-fade-in" style="animation-delay: 0.1s;">
-        <div class="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-white/5 border border-white/10 text-xs text-neutral-400 uppercase tracking-widest mb-6">
-            <span class="w-2 h-2 rounded-full bg-green-500 animate-pulse"></span> Available for Projects
+    <header class="max-w-5xl mx-auto px-6 pt-20 pb-24 text-center relative z-10 animate-fade-in" style="animation-delay: 0.1s;">
+        <div class="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-white/5 border border-white/5 text-[11px] text-neutral-400 uppercase tracking-widest mb-8">
+            <span class="w-1.5 h-1.5 rounded-full bg-neutral-400 animate-pulse"></span> Open for Booking
         </div>
         
-        <h1 class="text-5xl md:text-7xl font-extrabold tracking-tight mb-6 gradient-text">
-            Minecraft Recording Manager
-        </h1>
+        <!-- Title with khauf.png to the left -->
+        <div class="flex flex-col md:flex-row items-center justify-center gap-4 md:gap-6 mb-6">
+            <img src="khauf.png" alt="Khauf Logo" class="w-14 h-14 md:w-20 md:h-20 rounded-2xl border border-white/10 object-cover shadow-2xl">
+            <h1 class="text-4xl md:text-6xl font-extrabold tracking-tight gradient-text text-left">
+                Khauf
+            </h1>
+        </div>
+        <p class="text-neutral-400 text-sm md:text-base tracking-widest uppercase mb-6 font-semibold">Minecraft Recording Manager</p>
         
-        <p class="text-neutral-400 text-lg md:text-xl max-w-2xl mx-auto font-light leading-relaxed mb-10">
-            Professional workflow optimization, event coordination, and production management tailored for elite content creators.
+        <p class="text-neutral-500 text-base md:text-lg max-w-2xl mx-auto font-light leading-relaxed mb-16">
+            Professional workflow optimization, session coordination, and event management tailored meticulously for top-tier creators.
         </p>
-
-        <!-- Main Avatar Image -->
-        <div class="relative w-36 h-36 mx-auto mb-16 group">
-            <div class="absolute inset-0 bg-white/10 rounded-full blur-xl group-hover:bg-white/20 transition duration-500"></div>
-            <img src="khauf.png" alt="Khauf" class="relative w-full h-full rounded-full border-2 border-white/30 object-cover transform transition duration-500 group-hover:scale-105">
-        </div>
     </header>
 
     <!-- Stats & Analytics Section -->
-    <section class="max-w-5xl mx-auto px-6 pb-24 animate-fade-in" style="animation-delay: 0.2s;">
+    <section class="max-w-4xl mx-auto px-6 pb-24 animate-fade-in" style="animation-delay: 0.2s;">
         <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
             <!-- Stat 1 -->
             <div class="aesthetic-card p-8 rounded-2xl relative overflow-hidden">
-                <div class="absolute top-0 right-0 w-32 h-32 bg-white/[0.01] rounded-bl-full pointer-events-none"></div>
-                <p class="text-xs uppercase tracking-wider text-neutral-500 font-semibold mb-2">Proven Track Record</p>
-                <h3 class="text-5xl font-extrabold text-white mb-3 tracking-tight">15+</h3>
-                <p class="text-neutral-400 text-sm leading-relaxed">Youtubers managed successfully, streamlining recording sessions, handling modpacks, assets, and synchronizing talent schedules flawlessly.</p>
+                <p class="text-[11px] uppercase tracking-wider text-neutral-500 font-semibold mb-2">Portfolio Volume</p>
+                <h3 class="text-4xl font-extrabold text-neutral-300 mb-3 tracking-tight">15+ YouTubers</h3>
+                <p class="text-neutral-500 text-xs leading-relaxed">Managed end-to-end recording pipelines, sync logistics, modpacks, and multi-talent coordination seamlessly.</p>
             </div>
             
             <!-- Stat 2 -->
             <div class="aesthetic-card p-8 rounded-2xl relative overflow-hidden">
-                <div class="absolute top-0 right-0 w-32 h-32 bg-white/[0.01] rounded-bl-full pointer-events-none"></div>
-                <p class="text-xs uppercase tracking-wider text-neutral-500 font-semibold mb-2">Industry Experience</p>
-                <h3 class="text-5xl font-extrabold text-white mb-3 tracking-tight">5+ Years</h3>
-                <p class="text-neutral-400 text-sm leading-relaxed">Deeply rooted in the Minecraft ecosystem. Perfect understanding of server logistics, cinematic angles, replay mod protocols, and pacing.</p>
+                <p class="text-[11px] uppercase tracking-wider text-neutral-500 font-semibold mb-2">Industry Tenure</p>
+                <h3 class="text-4xl font-extrabold text-neutral-300 mb-3 tracking-tight">5+ Years Exp</h3>
+                <p class="text-neutral-500 text-xs leading-relaxed">Deep structural knowledge of server mechanics, cinema direction, replay mod setups, and perfect video pacing.</p>
             </div>
         </div>
     </section>
 
-    <!-- Services / What I Do -->
-    <section class="max-w-5xl mx-auto px-6 pb-32 animate-fade-in" style="animation-delay: 0.3s;">
-        <h2 class="text-2xl font-bold tracking-wider uppercase text-center mb-12 text-neutral-300">Expertise & Services</h2>
+    <!-- Services Section -->
+    <section class="max-w-4xl mx-auto px-6 pb-32 animate-fade-in" style="animation-delay: 0.3s;">
+        <h2 class="text-xs font-bold tracking-widest uppercase text-center mb-12 text-neutral-500">Core Services</h2>
         
-        <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+        <div class="grid grid-cols-1 md:grid-cols-3 gap-5">
             <div class="aesthetic-card p-6 rounded-xl">
-                <div class="w-10 h-10 rounded-lg bg-white/5 border border-white/10 flex items-center justify-center mb-4">
-                    <i class="fa-solid fa-clapperboard text-sm text-neutral-300"></i>
+                <div class="w-9 h-9 rounded-lg bg-white/5 border border-white/5 flex items-center justify-center mb-4">
+                    <i class="fa-solid fa-clapperboard text-xs text-neutral-400"></i>
                 </div>
-                <h4 class="text-lg font-semibold mb-2 text-white">Session Direction</h4>
-                <p class="text-neutral-400 text-xs leading-relaxed">Directing talent, timing triggers, and managing camera paths/replays for breathtaking cinema quality videos.</p>
+                <h4 class="text-sm font-semibold mb-2 text-neutral-300">Session Direction</h4>
+                <p class="text-neutral-500 text-[11px] leading-relaxed">Directing talent triggers, visual framing, and tracking event timelines dynamically.</p>
             </div>
 
             <div class="aesthetic-card p-6 rounded-xl">
-                <div class="w-10 h-10 rounded-lg bg-white/5 border border-white/10 flex items-center justify-center mb-4">
-                    <i class="fa-solid fa-server text-sm text-neutral-300"></i>
+                <div class="w-9 h-9 rounded-lg bg-white/5 border border-white/5 flex items-center justify-center mb-4">
+                    <i class="fa-solid fa-server text-xs text-neutral-400"></i>
                 </div>
-                <h4 class="text-lg font-semibold mb-2 text-white">Backstage Logistics</h4>
-                <p class="text-neutral-400 text-xs leading-relaxed">Pre-session server setup, asset preparation, and mods synchronization so creators just hit record and play.</p>
+                <h4 class="text-sm font-semibold mb-2 text-neutral-300">Technical Logistics</h4>
+                <p class="text-neutral-500 text-[11px] leading-relaxed">Pre-session server testing, mod synchronization, and asset handling before the hit of record.</p>
             </div>
 
             <div class="aesthetic-card p-6 rounded-xl">
-                <div class="w-10 h-10 rounded-lg bg-white/5 border border-white/10 flex items-center justify-center mb-4">
-                    <i class="fa-solid fa-list-check text-sm text-neutral-300"></i>
+                <div class="w-9 h-9 rounded-lg bg-white/5 border border-white/5 flex items-center justify-center mb-4">
+                    <i class="fa-solid fa-list-check text-xs text-neutral-400"></i>
                 </div>
-                <h4 class="text-lg font-semibold mb-2 text-white">Pacing & Workflow</h4>
-                <p class="text-neutral-400 text-xs leading-relaxed">Ensuring no dead air time. Structuring your recording hours to save dozens of hours in the cutting room.</p>
+                <h4 class="text-sm font-semibold mb-2 text-neutral-300">Workflow Control</h4>
+                <p class="text-neutral-500 text-[11px] leading-relaxed">Eliminating empty time, maximizing output rhythm, and refining structural clarity during raw recording hours.</p>
             </div>
         </div>
     </section>
 
     <!-- Footer / CTA -->
-    <footer class="border-t border-white/5 bg-black/40 backdrop-blur-md py-12 text-center relative z-20">
+    <footer class="border-t border-white/5 bg-black/60 backdrop-blur-md py-14 text-center relative z-20">
         <div class="max-w-5xl mx-auto px-6">
-            <h3 class="text-2xl font-bold mb-4 tracking-tight">Let's scale your production.</h3>
-            <p class="text-neutral-500 text-sm mb-8 max-w-sm mx-auto">Get top tier structural direction for your Minecraft series today.</p>
+            <h3 class="text-xl font-bold mb-3 tracking-tight text-neutral-300">Let's build something cinematic.</h3>
+            <p class="text-neutral-500 text-xs mb-8 max-w-sm mx-auto">Elevate your production workflow instantly.</p>
             
             <a href="https://discord.com/users/1503092593435742399" target="_blank" 
-               class="inline-flex items-center gap-3 px-8 py-4 bg-white text-black font-bold rounded-xl tracking-wide hover:scale-105 transition-all duration-300 shadow-xl shadow-white/5 group">
-                <i class="fa-brands fa-discord text-xl"></i> Contact Me via Discord 
-                <i class="fa-solid fa-arrow-right transition-transform group-hover:translate-x-1"></i>
+               class="inline-flex items-center gap-3 px-7 py-3.5 bg-neutral-800 border border-white/10 text-neutral-300 font-semibold rounded-xl text-xs tracking-wide hover:bg-neutral-700 transition-all duration-300 shadow-xl group">
+                <i class="fa-brands fa-discord text-sm text-neutral-400"></i> Contact on Discord 
+                <i class="fa-solid fa-arrow-right text-[10px] transition-transform group-hover:translate-x-1"></i>
             </a>
             
-            <p class="text-neutral-600 text-xs mt-12">© 2026 Khauf. All Rights Reserved.</p>
+            <p class="text-neutral-600 text-[10px] mt-12">© 2026 Khauf. All Rights Reserved.</p>
         </div>
     </footer>
 
