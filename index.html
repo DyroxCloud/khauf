@@ -4,6 +4,10 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Khauf | Recording Manager Portfolio</title>
+    
+    <!-- Browser Favicon Fix -->
+    <link rel="icon" type="image/png" href="khauf.png">
+    
     <!-- Tailwind CSS -->
     <script src="https://cdn.tailwindcss.com"></script>
     <!-- Font Awesome for Icons -->
@@ -14,39 +18,47 @@
     <style>
         body {
             font-family: 'Plus Jakarta Sans', sans-serif;
-            background: linear-gradient(135deg, #0d0d0f 0%, #020202 100%);
-            color: #d4d4d8; /* Dull White / Zinc Base */
+            background: linear-gradient(135deg, #0a0a0c 0%, #020202 100%);
+            color: #b3b3b3; /* Dull White Base */
             overflow-x: hidden;
         }
 
-        /* Matte Dull White to Darker Silver Gradient for text */
+        /* Dull White to Muted Silver Gradient Text */
         .gradient-text {
-            background: linear-gradient(180deg, #e4e4e7 20%, #a1a1aa 100%);
+            background: linear-gradient(180deg, #e4e4e7 10%, #8a8a93 100%);
             -webkit-background-clip: text;
             -webkit-text-fill-color: transparent;
         }
 
-        /* Aesthetic Glow Card & 3D Tilt Effect Simulation */
-        .aesthetic-card {
-            background: rgba(255, 255, 255, 0.02);
-            border: 1px solid rgba(255, 255, 255, 0.05);
-            backdrop-filter: blur(12px);
-            transition: transform 0.4s cubic-bezier(0.25, 1, 0.5, 1), border-color 0.4s, box-shadow 0.4s;
-            transform-style: preserve-3d;
+        /* 3D Tilt Wrapper */
+        .tilt-container {
             perspective: 1000px;
         }
 
-        .aesthetic-card:hover {
-            transform: translateY(-5px) rotateX(4deg) rotateY(-4deg);
-            border-color: rgba(255, 255, 255, 0.15);
-            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.8), 0 0 30px rgba(255, 255, 255, 0.02);
+        /* Aesthetic Premium Card Layout */
+        .aesthetic-card {
+            background: rgba(255, 255, 255, 0.02);
+            border: 1px solid rgba(255, 255, 255, 0.05);
+            backdrop-filter: blur(16px);
+            transition: transform 0.2s cubic-bezier(0.25, 1, 0.5, 1), border-color 0.4s, box-shadow 0.4s;
+            transform-style: preserve-3d;
         }
 
-        /* Custom Reveal Animation */
+        .aesthetic-card:hover {
+            border-color: rgba(255, 255, 255, 0.15);
+            box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.7), 0 0 40px rgba(255, 255, 255, 0.02);
+        }
+
+        /* Inner element float for 3D depth */
+        .card-depth {
+            transform: translateZ(30px);
+        }
+
+        /* Entrance Animation */
         @keyframes fadeInUp {
             from {
                 opacity: 0;
-                transform: translateY(20px);
+                transform: translateY(25px);
             }
             to {
                 opacity: 1;
@@ -55,18 +67,18 @@
         }
 
         .animate-fade-in {
-            animation: fadeInUp 0.8s cubic-bezier(0.25, 1, 0.5, 1) forwards;
+            animation: fadeInUp 0.9s cubic-bezier(0.25, 1, 0.5, 1) forwards;
         }
 
-        /* Subtle Background Grid Line Overlay */
+        /* Subtle Grid Overlay */
         .bg-grid {
             background-size: 50px 50px;
-            background-image: linear-gradient(to right, rgba(255, 255, 255, 0.008) 1px, transparent 1px),
-                              linear-gradient(to bottom, rgba(255, 255, 255, 0.008) 1px, transparent 1px);
+            background-image: linear-gradient(to right, rgba(255, 255, 255, 0.006) 1px, transparent 1px),
+                              linear-gradient(to bottom, rgba(255, 255, 255, 0.006) 1px, transparent 1px);
         }
     </style>
 </head>
-<body class="relative min-h-screen bg-grid antialiased selection:bg-neutral-800 selection:text-white">
+<body class="relative min-h-screen bg-grid antialiased selection:bg-neutral-800 selection:text-neutral-200">
 
     <!-- Navbar -->
     <nav class="w-full max-w-6xl mx-auto px-6 py-6 flex justify-between items-center z-50 relative animate-fade-in">
@@ -75,77 +87,103 @@
             <span class="text-lg font-bold tracking-wider uppercase text-neutral-300">Khauf</span>
         </div>
         <a href="https://discord.com/users/1503092593435742399" target="_blank" 
-           class="px-5 py-2.5 bg-neutral-200 text-black font-semibold rounded-full text-xs tracking-wide hover:bg-white transition-all duration-300 shadow-lg shadow-white/5 flex items-center gap-2">
-            <i class="fa-brands fa-discord"></i> DM on Discord
+           class="px-5 py-2.5 bg-neutral-800 border border-white/10 text-neutral-300 font-semibold rounded-full text-xs tracking-wide hover:bg-neutral-700 transition-all duration-300 shadow-lg flex items-center gap-2">
+            <i class="fa-brands fa-discord text-neutral-400"></i> DM on Discord
         </a>
     </nav>
 
     <!-- Hero Section -->
     <header class="max-w-5xl mx-auto px-6 pt-20 pb-24 text-center relative z-10 animate-fade-in" style="animation-delay: 0.1s;">
-        <div class="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-white/5 border border-white/5 text-[11px] text-neutral-400 uppercase tracking-widest mb-8">
-            <span class="w-1.5 h-1.5 rounded-full bg-neutral-400 animate-pulse"></span> Open for Booking
+        <div class="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-white/[0.03] border border-white/5 text-[11px] text-neutral-400 uppercase tracking-widest mb-8">
+            <span class="w-1.5 h-1.5 rounded-full bg-neutral-400 animate-pulse"></span> Active / Open for Booking
         </div>
         
-        <!-- Title with khauf.png to the left -->
-        <div class="flex flex-col md:flex-row items-center justify-center gap-4 md:gap-6 mb-6">
-            <img src="khauf.png" alt="Khauf Logo" class="w-14 h-14 md:w-20 md:h-20 rounded-2xl border border-white/10 object-cover shadow-2xl">
-            <h1 class="text-4xl md:text-6xl font-extrabold tracking-tight gradient-text text-left">
+        <!-- Title & khauf.png Logo on Left Side -->
+        <div class="flex flex-row items-center justify-center gap-4 md:gap-5 mb-4">
+            <img src="khauf.png" alt="Khauf Logo" class="w-12 h-12 md:w-16 md:h-16 rounded-xl border border-white/10 object-cover shadow-xl">
+            <h1 class="text-4xl md:text-6xl font-extrabold tracking-tight gradient-text">
                 Khauf
             </h1>
         </div>
-        <p class="text-neutral-400 text-sm md:text-base tracking-widest uppercase mb-6 font-semibold">Minecraft Recording Manager</p>
+        <p class="text-neutral-500 text-xs md:text-sm tracking-[0.25em] uppercase mb-8 font-semibold">Minecraft Recording Manager</p>
         
-        <p class="text-neutral-500 text-base md:text-lg max-w-2xl mx-auto font-light leading-relaxed mb-16">
-            Professional workflow optimization, session coordination, and event management tailored meticulously for top-tier creators.
+        <p class="text-neutral-400 text-base md:text-lg max-w-2xl mx-auto font-light leading-relaxed mb-16">
+            Professional workflow optimization, session direction, and production logistics meticulously executed for top-tier creators.
         </p>
     </header>
 
-    <!-- Stats & Analytics Section -->
-    <section class="max-w-4xl mx-auto px-6 pb-24 animate-fade-in" style="animation-delay: 0.2s;">
+    <!-- Stats Section -->
+    <section class="max-w-4xl mx-auto px-6 pb-24 tilt-container animate-fade-in" style="animation-delay: 0.2s;">
         <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
             <!-- Stat 1 -->
-            <div class="aesthetic-card p-8 rounded-2xl relative overflow-hidden">
-                <p class="text-[11px] uppercase tracking-wider text-neutral-500 font-semibold mb-2">Portfolio Volume</p>
-                <h3 class="text-4xl font-extrabold text-neutral-300 mb-3 tracking-tight">15+ YouTubers</h3>
-                <p class="text-neutral-500 text-xs leading-relaxed">Managed end-to-end recording pipelines, sync logistics, modpacks, and multi-talent coordination seamlessly.</p>
+            <div class="aesthetic-card p-8 rounded-2xl relative overflow-hidden" data-tilt>
+                <div class="card-depth">
+                    <p class="text-[10px] uppercase tracking-widest text-neutral-500 font-semibold mb-2">Portfolio Footprint</p>
+                    <h3 class="text-3xl font-bold text-neutral-200 mb-3 tracking-tight">15+ YouTubers</h3>
+                    <p class="text-neutral-500 text-xs leading-relaxed">Managed end-to-end recording pipelines, events timelines, server operations, and multi-creator synchronization.</p>
+                </div>
             </div>
             
             <!-- Stat 2 -->
-            <div class="aesthetic-card p-8 rounded-2xl relative overflow-hidden">
-                <p class="text-[11px] uppercase tracking-wider text-neutral-500 font-semibold mb-2">Industry Tenure</p>
-                <h3 class="text-4xl font-extrabold text-neutral-300 mb-3 tracking-tight">5+ Years Exp</h3>
-                <p class="text-neutral-500 text-xs leading-relaxed">Deep structural knowledge of server mechanics, cinema direction, replay mod setups, and perfect video pacing.</p>
+            <div class="aesthetic-card p-8 rounded-2xl relative overflow-hidden" data-tilt>
+                <div class="card-depth">
+                    <p class="text-[10px] uppercase tracking-widest text-neutral-500 font-semibold mb-2">Industry Tenure</p>
+                    <h3 class="text-3xl font-bold text-neutral-200 mb-3 tracking-tight">5+ Years Exp</h3>
+                    <p class="text-neutral-500 text-xs leading-relaxed">Flawless execution of server mechanics, replay mods setup, cinematic shot calls, and dynamic recording pacing.</p>
+                </div>
             </div>
         </div>
     </section>
 
-    <!-- Services Section -->
-    <section class="max-w-4xl mx-auto px-6 pb-32 animate-fade-in" style="animation-delay: 0.3s;">
-        <h2 class="text-xs font-bold tracking-widest uppercase text-center mb-12 text-neutral-500">Core Services</h2>
+    <!-- Services / Expertise -->
+    <section class="max-w-4xl mx-auto px-6 pb-24 tilt-container animate-fade-in" style="animation-delay: 0.3s;">
+        <h2 class="text-xs font-bold tracking-widest uppercase text-center mb-10 text-neutral-500">Core Expertise</h2>
         
         <div class="grid grid-cols-1 md:grid-cols-3 gap-5">
-            <div class="aesthetic-card p-6 rounded-xl">
-                <div class="w-9 h-9 rounded-lg bg-white/5 border border-white/5 flex items-center justify-center mb-4">
-                    <i class="fa-solid fa-clapperboard text-xs text-neutral-400"></i>
+            <div class="aesthetic-card p-6 rounded-xl" data-tilt>
+                <div class="card-depth">
+                    <div class="w-9 h-9 rounded-lg bg-white/5 border border-white/5 flex items-center justify-center mb-4">
+                        <i class="fa-solid fa-clapperboard text-xs text-neutral-400"></i>
+                    </div>
+                    <h4 class="text-sm font-semibold mb-2 text-neutral-300">Session Direction</h4>
+                    <p class="text-neutral-500 text-[11px] leading-relaxed">Directing video pacing, event timing, and managing replay angles live during production.</p>
                 </div>
-                <h4 class="text-sm font-semibold mb-2 text-neutral-300">Session Direction</h4>
-                <p class="text-neutral-500 text-[11px] leading-relaxed">Directing talent triggers, visual framing, and tracking event timelines dynamically.</p>
             </div>
 
-            <div class="aesthetic-card p-6 rounded-xl">
-                <div class="w-9 h-9 rounded-lg bg-white/5 border border-white/5 flex items-center justify-center mb-4">
-                    <i class="fa-solid fa-server text-xs text-neutral-400"></i>
+            <div class="aesthetic-card p-6 rounded-xl" data-tilt>
+                <div class="card-depth">
+                    <div class="w-9 h-9 rounded-lg bg-white/5 border border-white/5 flex items-center justify-center mb-4">
+                        <i class="fa-solid fa-server text-xs text-neutral-400"></i>
+                    </div>
+                    <h4 class="text-sm font-semibold mb-2 text-neutral-300">Technical Logistics</h4>
+                    <p class="text-neutral-500 text-[11px] leading-relaxed">Server optimization, modpack handling, and asset syncing prior to rolling the cameras.</p>
                 </div>
-                <h4 class="text-sm font-semibold mb-2 text-neutral-300">Technical Logistics</h4>
-                <p class="text-neutral-500 text-[11px] leading-relaxed">Pre-session server testing, mod synchronization, and asset handling before the hit of record.</p>
             </div>
 
-            <div class="aesthetic-card p-6 rounded-xl">
-                <div class="w-9 h-9 rounded-lg bg-white/5 border border-white/5 flex items-center justify-center mb-4">
-                    <i class="fa-solid fa-list-check text-xs text-neutral-400"></i>
+            <div class="aesthetic-card p-6 rounded-xl" data-tilt>
+                <div class="card-depth">
+                    <div class="w-9 h-9 rounded-lg bg-white/5 border border-white/5 flex items-center justify-center mb-4">
+                        <i class="fa-solid fa-list-check text-xs text-neutral-400"></i>
+                    </div>
+                    <h4 class="text-sm font-semibold mb-2 text-neutral-300">Workflow Sync</h4>
+                    <p class="text-neutral-500 text-[11px] leading-relaxed">Removing dead-air, structuring sessions, and saving hundreds of hours inside post-production edit phases.</p>
                 </div>
-                <h4 class="text-sm font-semibold mb-2 text-neutral-300">Workflow Control</h4>
-                <p class="text-neutral-500 text-[11px] leading-relaxed">Eliminating empty time, maximizing output rhythm, and refining structural clarity during raw recording hours.</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Recent Project Focus Section -->
+    <section class="max-w-4xl mx-auto px-6 pb-32 tilt-container animate-fade-in" style="animation-delay: 0.4s;">
+        <h2 class="text-xs font-bold tracking-widest uppercase text-center mb-10 text-neutral-500">Production Standard</h2>
+        <div class="aesthetic-card p-8 rounded-2xl" data-tilt>
+            <div class="card-depth flex flex-col md:flex-row justify-between items-start md:items-center gap-6">
+                <div>
+                    <h4 class="text-base font-semibold text-neutral-300 mb-2">High-End Creator Lifecycle</h4>
+                    <p class="text-neutral-500 text-xs max-w-xl leading-relaxed">From large scale SMP events to highly scripted episodic content—I architect the flow so that creators focus 100% on performance and entertainment value.</p>
+                </div>
+                <div class="px-4 py-2 bg-white/[0.03] border border-white/5 rounded-lg text-xs text-neutral-400 whitespace-nowrap">
+                    ⚡ 100% Retainer Rate
+                </div>
             </div>
         </div>
     </section>
@@ -153,12 +191,12 @@
     <!-- Footer / CTA -->
     <footer class="border-t border-white/5 bg-black/60 backdrop-blur-md py-14 text-center relative z-20">
         <div class="max-w-5xl mx-auto px-6">
-            <h3 class="text-xl font-bold mb-3 tracking-tight text-neutral-300">Let's build something cinematic.</h3>
-            <p class="text-neutral-500 text-xs mb-8 max-w-sm mx-auto">Elevate your production workflow instantly.</p>
+            <h3 class="text-lg font-bold mb-2 tracking-tight text-neutral-300">Let's scale your content pipeline.</h3>
+            <p class="text-neutral-500 text-xs mb-8 max-w-sm mx-auto">Get premium workflow direction for your upcoming projects.</p>
             
             <a href="https://discord.com/users/1503092593435742399" target="_blank" 
-               class="inline-flex items-center gap-3 px-7 py-3.5 bg-neutral-800 border border-white/10 text-neutral-300 font-semibold rounded-xl text-xs tracking-wide hover:bg-neutral-700 transition-all duration-300 shadow-xl group">
-                <i class="fa-brands fa-discord text-sm text-neutral-400"></i> Contact on Discord 
+               class="inline-flex items-center gap-3 px-6 py-3 bg-neutral-200 text-black font-bold rounded-xl text-xs tracking-wide hover:bg-white hover:scale-[1.02] transition-all duration-300 shadow-xl group">
+                <i class="fa-brands fa-discord text-base"></i> Connect Direct via Discord 
                 <i class="fa-solid fa-arrow-right text-[10px] transition-transform group-hover:translate-x-1"></i>
             </a>
             
@@ -166,5 +204,29 @@
         </div>
     </footer>
 
+    <!-- 3D Ultra-Smooth Tilt Script -->
+    <script>
+        const cards = document.querySelectorAll('[data-tilt]');
+        
+        cards.forEach(card => {
+            card.addEventListener('mousemove', (e) => {
+                const rect = card.getBoundingClientRect();
+                const x = e.clientX - rect.left;
+                const y = e.clientY - rect.top;
+                
+                const xc = rect.width / 2;
+                const yc = rect.height / 2;
+                
+                const angleX = (yc - y) / 12; 
+                const angleY = (x - xc) / 12;
+                
+                card.style.transform = `rotateX(${angleX}deg) rotateY(${angleY}deg) translateY(-4px)`;
+            });
+            
+            card.addEventListener('mouseleave', () => {
+                card.style.transform = 'rotateX(0deg) rotateY(0deg) translateY(0px)';
+            });
+        });
+    </script>
 </body>
 </html>
